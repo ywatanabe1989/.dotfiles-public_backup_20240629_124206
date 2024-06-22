@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+encrypt () {
+    email="$1"
+    pw="$2"
+    tmp_file=/tmp/"$email".txt
+    mkdir -p ~/.pw
+
+    touch "$tmp_file"
+    echo "$pw" > "$tmp_file"
+    gpg2 --output ~/.pw/"$email".gpg --symmetric "$tmp_file"
+    rm -f "$tmp_file"
+    ls ~/.pw
+}
+
+rm -f ~/.mu/xapian/flintlock
+mu init \
+  --maildir=~/Mail \
+  --muhome=~/.mu \
+  --my-address=wyusuuke@gmail.com \
+  --my-address=wataning11@gmail.com \
+  --my-address=ywata1989@gmail.com \
+  --my-address=Yusuke.Watanabe@unimelb.edu.au \
+  --my-address=ywatanabe@ywata-note-win
+mu index --muhome=~/.mu
+
+
+
+## EOF

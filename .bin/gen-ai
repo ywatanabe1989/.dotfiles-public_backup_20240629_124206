@@ -1,0 +1,6 @@
+#!/bin/bash
+
+prompt="@1"
+python -c "import mngs; m = mngs.ai.GenAI(); print(m(\"$prompt\"))"
+
+# EOF
